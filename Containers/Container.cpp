@@ -15,3 +15,11 @@ uint32_t Container::getSize()
 {
     return size;
 }
+
+void Container::alignOutOfRangeIndexToSize(uint32_t& index)
+{
+    if(index > size)
+    {
+        index = size;
+    }
+}

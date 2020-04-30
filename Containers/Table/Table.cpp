@@ -12,14 +12,6 @@ Table::~Table()
     clear();
 }
 
-void Table::alignOutOfRangeIndexToTableSize(uint32_t& index)
-{
-    if(index > size)
-    {
-        index = size;
-    }
-}
-
 void Table::reassignTable(int32_t* newTab)
 {
     if(tab)
@@ -38,7 +30,7 @@ void Table::clear()
 
 void Table::add(int32_t value, uint32_t index)
 {
-    alignOutOfRangeIndexToTableSize(index);
+    alignOutOfRangeIndexToSize(index);
 
     size++;
     int32_t* newTab = new int32_t[size];

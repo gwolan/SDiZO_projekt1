@@ -17,7 +17,6 @@ class Table : public Container
 
 
     private:
-    void alignOutOfRangeIndexToTableSize(uint32_t& index);
     void reassignTable(int32_t* newTab);
 
     int32_t* tab;
