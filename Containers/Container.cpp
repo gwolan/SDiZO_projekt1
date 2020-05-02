@@ -3,7 +3,6 @@
 
 Container::Container()
     : size(0)
-    , npos(-1)
 { }
 
 bool Container::isEmpty()

@@ -17,5 +17,4 @@ class Container
 
     protected:
     uint32_t size;
-    const int32_t npos;
 };
