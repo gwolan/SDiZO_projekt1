@@ -8,6 +8,9 @@ int main()
                             std::string("Autor: Grzegorz Wolanski\n\n") +
                             std::string("Menu:\n") +
                             std::string("1. Tablica.\n") +
+                            std::string("2. Lista.\n") +
+                            std::string("3. Kopiec.\n") +
+                            std::string("4. Pomiary.\n") +
                             std::string("0. Wyjscie.\n\n") +
                             std::string("Wybor: "));
 

@@ -3,6 +3,7 @@
 #include <Application/Menu/ActionStrategy.hpp>
 #include <Application/Menu/Actions/ExitProgram.hpp>
 #include <Application/Menu/Actions/TableOperations.hpp>
+#include <Application/Menu/Actions/ListOperations.hpp>
 
 
 ActionStrategy::ActionStrategy()
@@ -28,6 +29,19 @@ bool ActionStrategy::selectAction(std::string choice)
         case 1:
         {
             selectedAction = std::make_unique<TableOperations>("Operacje na tablicy");
+        }
+        break;
+        case 2:
+        {
+            selectedAction = std::make_unique<ListOperations>("Operacje na liscie");
+        }
+        break;
+        case 3:
+        {
+        }
+        break;
+        case 4:
+        {
         }
         break;
         default:
