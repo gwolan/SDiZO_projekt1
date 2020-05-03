@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <Application/Menu/ActionStrategy.hpp>
 #include <Application/Menu/Actions/ExitProgram.hpp>
+#include <Application/Menu/Actions/TableOperations.hpp>
 
 
 ActionStrategy::ActionStrategy()
@@ -22,6 +23,11 @@ bool ActionStrategy::selectAction(std::string choice)
         case 0:
         {
             selectedAction = std::make_unique<ExitProgram>("Wyjście z programu");
+        }
+        break;
+        case 1:
+        {
+            selectedAction = std::make_unique<TableOperations>("Operacje na tablicy");
         }
         break;
         default:

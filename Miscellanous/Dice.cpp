@@ -4,10 +4,16 @@
 Dice::Dice(uint32_t lowerBound, uint32_t upperBound)
     : randomDevice()
     , randomEngine(randomDevice())
-    , uniformIntDistribution(lowerBound, upperBound)
+    , unsignedUniformIntDistribution(lowerBound, upperBound)
+    , signedUniformIntDistribution(lowerBound, upperBound)
 { }
 
-uint32_t Dice::roll()
+uint32_t Dice::rollUnsignedInt()
 {
-    return uniformIntDistribution(randomEngine);
+    return unsignedUniformIntDistribution(randomEngine);
+}
+
+int32_t Dice::rollSignedInt()
+{
+    return signedUniformIntDistribution(randomEngine);
 }

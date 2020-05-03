@@ -7,6 +7,7 @@ int main()
                             std::string("SDiZO Projekt nr 1: Tablica, Lista oraz Kopiec\n") +
                             std::string("Autor: Grzegorz Wolanski\n\n") +
                             std::string("Menu:\n") +
+                            std::string("1. Tablica.\n") +
                             std::string("0. Wyjscie.\n\n") +
                             std::string("Wybor: "));
 
