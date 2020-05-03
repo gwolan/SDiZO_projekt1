@@ -169,6 +169,8 @@ bool Heap::remove(uint32_t index)
     {
         clear();
     }
+
+    return true;
 }
 
 bool Heap::search(int32_t value)

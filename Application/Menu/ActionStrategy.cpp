@@ -4,6 +4,7 @@
 #include <Application/Menu/Actions/ExitProgram.hpp>
 #include <Application/Menu/Actions/TableOperations.hpp>
 #include <Application/Menu/Actions/ListOperations.hpp>
+#include <Application/Menu/Actions/HeapOperations.hpp>
 
 
 ActionStrategy::ActionStrategy()
@@ -38,6 +39,7 @@ bool ActionStrategy::selectAction(std::string choice)
         break;
         case 3:
         {
+            selectedAction = std::make_unique<HeapOperations>("Operacje na kopcu");
         }
         break;
         case 4:
