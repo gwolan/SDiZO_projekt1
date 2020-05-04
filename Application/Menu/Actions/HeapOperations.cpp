@@ -127,7 +127,7 @@ void HeapOperations::readContainerFromFile()
         }
         dataFile.close();
 
-        std::cout << "Struktura pomyslnie wczytana z pliku. Liczba elementow: " << heap.getSize() << std::endl;
+        std::cout << "Struktura pomyslnie wczytana z pliku. Liczba elementow: " << heap.getSize() << std::endl << std::endl;
         heap.display();
         std::cout << std::endl;
     }

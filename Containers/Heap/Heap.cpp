@@ -230,9 +230,9 @@ void Heap::displayTree(std::string branchBody, std::string branchEnd, uint32_t n
                 childLeftBranchSymbol,
                 childParentBranchExtensionSymbol;
 
-    childRightBranchSymbol = childLeftBranchSymbol = childParentBranchExtensionSymbol = "  ";
-    childRightBranchSymbol              = "r-";
-    childLeftBranchSymbol               = "L-";
+    childRightBranchSymbol = childLeftBranchSymbol = childParentBranchExtensionSymbol = "   ";
+    childRightBranchSymbol              = "r--";
+    childLeftBranchSymbol               = "L--";
     childParentBranchExtensionSymbol[0] = '|';
 
     if(nodeIndex < size)
@@ -240,17 +240,17 @@ void Heap::displayTree(std::string branchBody, std::string branchEnd, uint32_t n
         branch = branchBody;
         if(branchEnd == childRightBranchSymbol)
         {
-            branch[branch.length() - 2] = ' ';
+            branch[branch.length() - 3] = ' ';
         }
         displayTree(branch + childParentBranchExtensionSymbol, childRightBranchSymbol, rightSiblingNodeId(nodeIndex));
 
-        branch = branch.substr(0, branchBody.length() - 2);
-        std::cout << branch << branchEnd << tab[nodeIndex] << std::endl;
+        branch = branch.substr(0, branchBody.length() - 3);
+        std::cout << branch << branchEnd << "(" << tab[nodeIndex] << ")" << std::endl;
 
         branch = branchBody;
         if(branchEnd == childLeftBranchSymbol)
         {
-            branch[branch.length() - 2 ] = ' ';
+            branch[branch.length() - 3] = ' ';
         }
         displayTree(branch + childParentBranchExtensionSymbol, childLeftBranchSymbol, leftSiblingNodeId(nodeIndex));
     }

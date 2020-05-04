@@ -127,7 +127,7 @@ void TableOperations::readContainerFromFile()
         }
         dataFile.close();
 
-        std::cout << "Struktura pomyslnie wczytana z pliku. Liczba elementow: " << table.getSize() << std::endl;
+        std::cout << "Struktura pomyslnie wczytana z pliku. Liczba elementow: " << table.getSize() << std::endl << std::endl;
         table.display();
         std::cout << std::endl;
     }

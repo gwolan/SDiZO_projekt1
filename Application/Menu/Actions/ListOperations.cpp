@@ -127,7 +127,7 @@ void ListOperations::readContainerFromFile()
         }
         dataFile.close();
 
-        std::cout << "Struktura pomyslnie wczytana z pliku. Liczba elementow: " << list.getSize() << std::endl;
+        std::cout << "Struktura pomyslnie wczytana z pliku. Liczba elementow: " << list.getSize() << std::endl << std::endl;
         list.display();
         std::cout << std::endl;
     }
