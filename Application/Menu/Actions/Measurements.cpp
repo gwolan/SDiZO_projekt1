@@ -489,7 +489,7 @@ void Measurements::measureRemoveForList(uint32_t instanceSize)
         for(uint32_t exerciseIt = 0; exerciseIt < partialExerciseIterations; ++exerciseIt)
         {
             timer.start();
-            list.remove(0);
+            list.remove(list.get(0));
             timer.stop();
 
             exerciseFrontTime += timer.getTime();
@@ -512,7 +512,7 @@ void Measurements::measureRemoveForList(uint32_t instanceSize)
         for(uint32_t exerciseIt = 0; exerciseIt < partialExerciseIterations; ++exerciseIt)
         {
             timer.start();
-            list.remove(list.getSize() - 1);
+            list.remove(list.get(list.getSize() - 1));
             timer.stop();
 
             exerciseBackTime += timer.getTime();
