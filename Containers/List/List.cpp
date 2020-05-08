@@ -6,6 +6,7 @@ List::List()
     : Container()
     , head(NULL)
     , tail(NULL)
+    , invalidIndex(-1)
 { }
 
 List::~List()
@@ -148,6 +149,28 @@ bool List::search(int32_t value)
     }
 
     return false;
+}
+
+int32_t List::get(uint32_t index)
+{
+    if(head && tail)
+    {
+        alignOutOfRangeIndexToSize(index);
+        if(index == size)
+        {
+            index--;
+        }
+
+        ListNode* tmp = head;
+        for(uint32_t it = 0; it < index; ++it)
+        {
+            tmp = tmp->next;
+        }
+
+        return tmp->value;
+    }
+
+    return invalidIndex;
 }
 
 void List::display()

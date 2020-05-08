@@ -159,8 +159,8 @@ void HeapOperations::generateRandomContainer()
         heap.add(dice.rollSignedInt());
     }
 
-    std::cout << std::endl;
     heap.display();
+    std::cout << std::endl;
 }
 
 void HeapOperations::addElementToContainer()
@@ -174,8 +174,8 @@ void HeapOperations::addElementToContainer()
     heap.add(newValue);
     timer.stop();
 
-    std::cout << std::endl << "Operacja wykonana w czasie: " << timer.getTime() << " [s]" << std::endl;
     heap.display();
+    std::cout << std::endl << std::endl << "Operacja wykonana w czasie: " << timer.getTime() << " [s]" << std::endl;
 }
 
 void HeapOperations::removeElementFromContainer()
@@ -191,8 +191,8 @@ void HeapOperations::removeElementFromContainer()
     if(heap.remove(index))
     {
         timer.stop();
-        std::cout << std::endl << "Operacja wykonana w czasie: " << timer.getTime() << " [s]" << std::endl;
         heap.display();
+        std::cout << std::endl << std::endl << "Operacja wykonana w czasie: " << timer.getTime() << " [s]" << std::endl;
     }
     else
     {
@@ -220,8 +220,8 @@ void HeapOperations::searchElementInContainer()
         std::cout << std::endl << "Podany element nie istnieje w strukturze." << std::endl;
     }
 
-    std::cout << "Operacja wykonana w czasie: " << timer.getTime() << " [s]" << std::endl << std::endl;
     heap.display();
+    std::cout << std::endl << std::endl << "Operacja wykonana w czasie: " << timer.getTime() << " [s]" << std::endl << std::endl << std::endl;
 }
 
 void HeapOperations::displayContainer()

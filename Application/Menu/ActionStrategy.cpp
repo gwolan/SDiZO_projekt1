@@ -5,6 +5,7 @@
 #include <Application/Menu/Actions/TableOperations.hpp>
 #include <Application/Menu/Actions/ListOperations.hpp>
 #include <Application/Menu/Actions/HeapOperations.hpp>
+#include <Application/Menu/Actions/Measurements.hpp>
 
 
 ActionStrategy::ActionStrategy()
@@ -44,6 +45,7 @@ bool ActionStrategy::selectAction(std::string choice)
         break;
         case 4:
         {
+            selectedAction = std::make_unique<Measurements>("Pomiary");
         }
         break;
         default:

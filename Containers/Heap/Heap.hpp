@@ -15,6 +15,7 @@ class Heap : public Container
     bool remove(uint32_t index);
     bool search(int32_t value);
     uint32_t getIndex(int32_t value);
+    int32_t get(uint32_t index);
     bool allocateCapacity(uint32_t newCapacity);
 
 

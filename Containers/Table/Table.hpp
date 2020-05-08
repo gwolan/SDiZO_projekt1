@@ -13,6 +13,7 @@ class Table : public Container
     void display();
     void add(int32_t value, uint32_t index);
     bool remove(uint32_t index);
+    int32_t get(uint32_t index);
     bool search(int32_t value);
 
 

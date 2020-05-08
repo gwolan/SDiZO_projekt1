@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include <fstream>
 #include <Application/Menu/Actions/BaseAction.hpp>
 #include <Containers/List/List.hpp>

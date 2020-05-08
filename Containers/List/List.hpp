@@ -14,6 +14,7 @@ class List : public Container
     void add(int32_t value, uint32_t index);
     bool remove(int32_t value);
     bool search(int32_t value);
+    int32_t get(uint32_t index);
 
 
     private:
@@ -21,4 +22,5 @@ class List : public Container
 
     ListNode* head;
     ListNode* tail;
+    const int32_t invalidIndex;
 };

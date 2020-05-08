@@ -83,6 +83,18 @@ bool Table::remove(uint32_t index)
     return true;
 }
 
+int32_t Table::get(uint32_t index)
+{
+    alignOutOfRangeIndexToSize(index);
+
+    if(index == size)
+    {
+        index--;
+    }
+
+    return tab[index];
+}
+
 bool Table::search(int32_t value)
 {
     for(uint32_t it = 0; it < size; ++it)

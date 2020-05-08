@@ -199,6 +199,18 @@ uint32_t Heap::getIndex(int32_t value)
     return invalidIndex;
 }
 
+int32_t Heap::get(uint32_t index)
+{
+    alignOutOfRangeIndexToSize(index);
+
+    if(index == size)
+    {
+        index--;
+    }
+
+    return tab[index];
+}
+
 void Heap::display()
 {
     if(isEmpty())
@@ -207,6 +219,10 @@ void Heap::display()
     }
     else
     {
+        std::cout << std::endl << "Forma drzewiasta: " << std::endl;
+        displayTree("", "", 0);
+
+        std::cout << std::endl;
         std::cout << "Rozmiar kopca: " << size << "/" << capacity << std::endl << std::endl;
 
         std::cout << "Forma tablicowa: " << std::endl;
@@ -214,10 +230,6 @@ void Heap::display()
         {
             std::cout << tab[it] << " ";
         }
-
-        std::cout << std::endl;
-        std::cout << std::endl << "Forma drzewiasta: " << std::endl;
-        displayTree("", "", 0);
     }
 }
 
