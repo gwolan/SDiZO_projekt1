@@ -29,7 +29,7 @@ void ListOperations::run()
     }
 }
 
-bool ListOperations::handleMenuSelection(std::string choice)
+void ListOperations::handleMenuSelection(std::string choice)
 {
     std::cout << std::endl;
 

@@ -10,7 +10,7 @@ class IOhandler
     ~IOhandler() = default;
 
     void printMenu();
-    bool readMenuSelection();
+    void readMenuSelection();
     std::string getCurrentMenuSelection();
     void setMenuContent(const std::string& menuContent);
 

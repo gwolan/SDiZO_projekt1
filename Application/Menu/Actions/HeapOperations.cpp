@@ -29,7 +29,7 @@ void HeapOperations::run()
     }
 }
 
-bool HeapOperations::handleMenuSelection(std::string choice)
+void HeapOperations::handleMenuSelection(std::string choice)
 {
     std::cout << std::endl;
 

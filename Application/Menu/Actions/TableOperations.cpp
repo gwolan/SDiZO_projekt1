@@ -29,7 +29,7 @@ void TableOperations::run()
     }
 }
 
-bool TableOperations::handleMenuSelection(std::string choice)
+void TableOperations::handleMenuSelection(std::string choice)
 {
     std::cout << std::endl;
 

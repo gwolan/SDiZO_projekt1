@@ -16,7 +16,7 @@ class TableOperations : public BaseAction
 
 
     private:
-    bool handleMenuSelection(std::string choice);
+    void handleMenuSelection(std::string choice);
     void drawSubMenu();
     void readContainerFromFile();
     void generateRandomContainer();

@@ -17,7 +17,7 @@ std::string IOhandler::getCurrentMenuSelection()
     return currentSelection;
 }
 
-bool IOhandler::readMenuSelection()
+void IOhandler::readMenuSelection()
 {
     std::cin >> currentSelection;
 }
