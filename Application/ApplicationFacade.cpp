@@ -11,9 +11,9 @@ void ApplicationFacade::printMenu()
     ioHandler.printMenu();
 }
 
-bool ApplicationFacade::readMenuSelection()
+void ApplicationFacade::readMenuSelection()
 {
-    return ioHandler.readMenuSelection();
+    ioHandler.readMenuSelection();
 }
 
 std::string ApplicationFacade::getCurrentMenuSelection()
