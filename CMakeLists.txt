@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.6)
 project (SDiZO_project1_Table_List_Heap CXX)
 
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS "-O3 -Wall")
+set(CMAKE_CXX_FLAGS "-O3 -Wall -static-libgcc -static-libstdc++")
 
 message("-- Used CXX compiler path: ${CMAKE_CXX_COMPILER}")
 
