@@ -6,6 +6,10 @@
 #include <Miscellanous/Timer.hpp>
 
 
+// This Action lets user play around with Heap container implementation
+// Each methods name describe what can be done with the Heap
+
+
 class HeapOperations : public BaseAction
 {
     public:

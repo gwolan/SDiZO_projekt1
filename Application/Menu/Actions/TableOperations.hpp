@@ -6,6 +6,10 @@
 #include <Miscellanous/Timer.hpp>
 
 
+// This Action lets user play around with Table container implementation
+// Each methods name describe what can be done with the Table
+
+
 class TableOperations : public BaseAction
 {
     public:

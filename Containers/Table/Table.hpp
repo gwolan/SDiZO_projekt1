@@ -3,6 +3,10 @@
 #include <Containers/Container.hpp>
 
 
+// Table implementation
+// Written in C++98 without STL use
+
+
 class Table : public Container
 {
     public:

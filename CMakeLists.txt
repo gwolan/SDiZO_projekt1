@@ -8,6 +8,8 @@ message("-- Used CXX compiler path: ${CMAKE_CXX_COMPILER}")
 
 #######################################################
 #                                                     #
+# Author: Wolanski Grzegorz                           #
+#                                                     #
 # Add new directories with *.cpp files to this list   #
 # All source code should be compiled in build process #
 #                                                     #

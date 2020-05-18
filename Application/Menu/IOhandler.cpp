@@ -14,11 +14,13 @@ void IOhandler::printMenu()
 
 std::string IOhandler::getCurrentMenuSelection()
 {
+    // read stored user selection from variable
     return currentSelection;
 }
 
 void IOhandler::readMenuSelection()
 {
+    // reads user selection from console and stores it in variable
     std::cin >> currentSelection;
 }
 

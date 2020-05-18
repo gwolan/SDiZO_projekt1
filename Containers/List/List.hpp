@@ -3,6 +3,10 @@
 #include <Containers/List/Utils/ListNode.hpp>
 
 
+// List implementation
+// Written in C++98 without STL use
+
+
 class List : public Container
 {
     public:

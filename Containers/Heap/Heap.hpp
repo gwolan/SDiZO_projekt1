@@ -3,6 +3,10 @@
 #include <Containers/Container.hpp>
 
 
+// Heap implementation
+// Written in C++98 without STL use
+
+
 class Heap : public Container
 {
     public:
@@ -24,6 +28,7 @@ class Heap : public Container
     uint32_t leftSiblingNodeId(uint32_t currentNode);
     uint32_t rightSiblingNodeId(uint32_t currentNode);
     int32_t nodeValue(uint32_t nodeId);
+    void swapNodeValues(uint32_t nodeIdSource, uint32_t nodeIdTarget);
     void displayTree(std::string branchBody, std::string branchEnd, uint32_t nodeIndex);
     void extendCapacityIfNeeded();
     void fixHeapUp(uint32_t nodeId);
@@ -31,7 +36,7 @@ class Heap : public Container
     bool leftSiblingExists(uint32_t nodeId);
     bool rightSiblingExists(uint32_t nodeId);
 
-    uint32_t capacity;
+    uint32_t capacity;    // allocated memory size
     int32_t* tab;
     const int32_t invalidIndex;
 };

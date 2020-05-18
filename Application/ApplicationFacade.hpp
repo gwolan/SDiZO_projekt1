@@ -6,6 +6,10 @@
 #include <Application/Menu/ActionStrategy.hpp>
 
 
+// instance of Facade design pattern
+// represent whole application interface
+
+
 class ApplicationFacade
 {
     public:

@@ -23,6 +23,7 @@ std::string ApplicationFacade::getCurrentMenuSelection()
 
 void ApplicationFacade::run()
 {
+    // if selected action is supported -> execute it
     if(actionStrategy.selectAction(ioHandler.getCurrentMenuSelection()))
     {
         actionStrategy.executeAction();

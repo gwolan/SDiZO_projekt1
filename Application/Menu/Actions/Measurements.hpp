@@ -10,6 +10,10 @@
 #include <Miscellanous/Timer.hpp>
 
 
+// This Action is an automated implementation to gather data of each container performance
+// Collected data is stored in file
+
+
 class Measurements : public BaseAction
 {
     public:

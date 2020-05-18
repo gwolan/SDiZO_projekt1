@@ -16,18 +16,21 @@ Heap::~Heap()
 
 void Heap::clear()
 {
+    // deallocate current memory space
     if(tab)
     {
         delete tab;
         tab = NULL;
     }
 
+    // set Heap size and capacity to empty
     size = 0;
     capacity = 0;
 }
 
 bool Heap::allocateCapacity(uint32_t newCapacity)
 {
+    // allocate only if requested capacity is larger
     if(newCapacity <= capacity)
     {
         return false;
@@ -35,6 +38,8 @@ bool Heap::allocateCapacity(uint32_t newCapacity)
 
     if(tab)
     {
+        // if Heap exists just allocate larger memory space
+        // and copy values to new location
         int32_t* newTab = new int32_t[newCapacity];
 
         for(uint32_t it = 0; it < size; ++it)
@@ -42,14 +47,17 @@ bool Heap::allocateCapacity(uint32_t newCapacity)
             newTab[it] = tab[it];
         }
 
+        // delete old content and remember new address
         delete tab;
         tab = newTab;
     }
     else
     {
+        // if Heap is empty just allocate new space
         tab = new int32_t[newCapacity];
     }
 
+    // remember new capacity
     capacity = newCapacity;
     return true;
 }
@@ -58,26 +66,31 @@ void Heap::extendCapacityIfNeeded()
 {
     if(isEmpty())
     {
+        // if Heap is empty allocate basic memory space
         allocateCapacity(2);
     }
     else if(size + 1 > capacity)
     {
+        // always allocate additional memory by doubling current capacity
         allocateCapacity(2 * capacity);
     }
 }
 
 uint32_t Heap::parentNodeId(uint32_t currentNode)
 {
+    // calculate parent node ID
     return (currentNode - 1) / 2;
 }
 
 uint32_t Heap::leftSiblingNodeId(uint32_t currentNode)
 {
+    // calculate left sibling node ID
     return currentNode * 2 + 1;
 }
 
 uint32_t Heap::rightSiblingNodeId(uint32_t currentNode)
 {
+    // calculate right sibling node ID
     return currentNode * 2 + 2;
 }
 
@@ -88,25 +101,34 @@ int32_t Heap::nodeValue(uint32_t nodeId)
 
 bool Heap::leftSiblingExists(uint32_t nodeId)
 {
+    // left sibling exists if its node ID fits to Heap size
     return leftSiblingNodeId(nodeId) < size;
 }
 
 bool Heap::rightSiblingExists(uint32_t nodeId)
 {
+    // right sibling exists if its node ID fits to Heap size
     return rightSiblingNodeId(nodeId) < size;
+}
+
+void Heap::swapNodeValues(uint32_t nodeIdSource, uint32_t nodeIdTarget)
+{
+    int32_t valuePlaceHolder = tab[nodeIdTarget];
+    tab[nodeIdTarget] = nodeValue(nodeIdSource);
+    tab[nodeIdSource] = valuePlaceHolder;
 }
 
 void Heap::fixHeapUp(uint32_t nodeId)
 {
     uint32_t parentNode = parentNodeId(nodeId);
-    int32_t valuePlaceHolder;
 
+    // keep fixing if given node is not a root and its parent node value is lower
     while(nodeId > 0 && nodeValue(parentNode) < nodeValue(nodeId))
     {
-        valuePlaceHolder = nodeValue(nodeId);
-        tab[nodeId] = nodeValue(parentNode);
-        tab[parentNode] = valuePlaceHolder;
+        // swap node value with his parent
+        swapNodeValues(parentNode, nodeId);
 
+        // reassing node ID for next loop iteration
         nodeId = parentNode;
         parentNode = parentNodeId(nodeId);
     }
@@ -114,29 +136,53 @@ void Heap::fixHeapUp(uint32_t nodeId)
 
 void Heap::fixHeapDown(uint32_t nodeId)
 {
+    // keep fixing while given node has siblings
+    // in Heap node has siblings if at least his left sibling node exists
     while(leftSiblingExists(nodeId))
     {
         if(rightSiblingExists(nodeId))
         {
+            // if right sibling node exists we need to choose the one that holds larger value for the swap
             int32_t leftSiblingValue = nodeValue(leftSiblingNodeId(nodeId));
             int32_t rightSiblingValue = nodeValue(rightSiblingNodeId(nodeId));
 
             if(leftSiblingValue > rightSiblingValue)
             {
-                tab[nodeId] = leftSiblingValue;
-                nodeId = leftSiblingNodeId(nodeId);
+                if(leftSiblingValue > nodeValue(nodeId))
+                {
+                    // left sibling has larger value - swap and reassing node ID for next interation
+                    swapNodeValues(leftSiblingNodeId(nodeId), nodeId);
+                    nodeId = leftSiblingNodeId(nodeId);
+                }
+                else
+                {
+                    // Heap structure is intact - no further fix needed
+                    return;
+                }
             }
             else
             {
-                tab[nodeId] = rightSiblingValue;
-                nodeId = rightSiblingNodeId(nodeId);
+                if(rightSiblingValue > nodeValue(nodeId))
+                {
+                    // right sibling has larger value - swap and reassing node ID for next interation
+                    swapNodeValues(rightSiblingNodeId(nodeId), nodeId);
+                    nodeId = rightSiblingNodeId(nodeId);
+                }
+                else
+                {
+                    // Heap structure is intact - no further fix needed
+                    return;
+                }
             }
         }
         else
         {
-            int32_t leftSiblingValue = nodeValue(leftSiblingNodeId(nodeId));
+            if(nodeValue(leftSiblingNodeId(nodeId)) > nodeValue(nodeId))
+            {
+                // node has only one sibling, just swap values
+                swapNodeValues(leftSiblingNodeId(nodeId), nodeId);
+            }
 
-            tab[nodeId] = leftSiblingValue;
             nodeId = leftSiblingNodeId(nodeId);
         }
     }
@@ -146,25 +192,31 @@ void Heap::add(int32_t value)
 {
     extendCapacityIfNeeded();
 
+    // add new leaf node at the Heap lowest level
     uint32_t newNodeId = size++;
     tab[newNodeId] = value;
 
+    // start fixing Heap upwards
     fixHeapUp(newNodeId);
 }
 
 bool Heap::remove(uint32_t index)
 {
+    // check if index is valid
     if(index >= size)
     {
         return false;
     }
 
+    // overwrite node value pointed by index with last leaf value
     int32_t lastValueInHeap = nodeValue(size - 1);
     tab[index] = lastValueInHeap;
 
-    fixHeapDown(index);
+    // start fixing Heap downwards
     size--;
+    fixHeapDown(index);
 
+    // set Heap to default if last element was removed
     if(isEmpty())
     {
         clear();
@@ -175,6 +227,7 @@ bool Heap::remove(uint32_t index)
 
 bool Heap::search(int32_t value)
 {
+    // linear search - just go through each element and check value
     for(uint32_t it = 0; it < size; ++it)
     {
         if(tab[it] == value)

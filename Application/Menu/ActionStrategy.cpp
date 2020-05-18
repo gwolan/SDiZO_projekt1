@@ -14,11 +14,15 @@ ActionStrategy::ActionStrategy()
 
 void ActionStrategy::executeAction()
 {
+    // runs Action initialized in ActionStrategy::selectAction method
     selectedAction->run();
 }
 
 bool ActionStrategy::selectAction(std::string choice)
 {
+    // variable 'choice' defines switch case that should be executed
+    // each case initializes Action object that should be performed
+
     uint32_t selection = std::atoi(choice.c_str());
 
     switch(selection)
